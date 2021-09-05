@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View, FlatList, TouchableOpacity, Image } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import { Icon } from 'react-native-elements'
+import { Icon } from 'react-native-elements';
 
 type NavProps = {
    id: string;
@@ -15,17 +15,17 @@ const data = [
       id: "123",
       title: "Get a ride",
       image: "https://links.papareact.com/3pn",
-      screen: "MapScreen"
+      screen: "Map"
    },
    {
       id: "456",
       title: "Order food",
       image: "https://links.papareact.com/28w",
-      screen: "EatsScreen"
+      screen: "Eat"
    }
 ];
 
-const NavOptions = () => {
+const NavOptions = ({ navigation }: any) => {
    return (
       <FlatList
          keyExtractor={(item) => item.id}
@@ -35,7 +35,13 @@ const NavOptions = () => {
             <TouchableOpacity
                style={
                   [tw`p-2 pb-8 pt-4 pl-3 bg-gray-200 m-2 w-40`]
-               }>
+               }
+               onPress={() => {
+                  if (item.screen === 'Map') {
+                     navigation.navigate(item.screen)
+                  }
+               }}
+            >
                <View>
                   <Image
                      source={{
