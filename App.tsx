@@ -4,14 +4,14 @@ import { Provider } from 'react-redux'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'react-native-elements';
 
-import HomeScreen from './screens/HomeScreen';
+import Navigation from './navigation/Navigation';
 
 export default function App() {
   return (
     <Provider store={store}>
       <ThemeProvider>
         <SafeAreaProvider>
-          <HomeScreen />
+          <Navigation />
         </SafeAreaProvider>
       </ThemeProvider>
     </Provider>
