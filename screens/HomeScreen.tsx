@@ -4,7 +4,7 @@ import tw from 'tailwind-react-native-classnames';
 
 import NavOptions from '../components/NavOptions';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }: any) => {
 
    return (
       <SafeAreaView style={tw`bg-white h-full w-full`}>
@@ -20,7 +20,7 @@ const HomeScreen = () => {
                }}
             />
 
-            <NavOptions />
+            <NavOptions navigation={navigation} />
          </View>
       </SafeAreaView>
    )
