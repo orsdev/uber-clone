@@ -18,8 +18,11 @@ const GooglePlacesInput = () => {
             const location = geometry?.location;
 
             dispatch(setOrigin({
-               location
+               location,
+               description: data.description
             }));
+
+            dispatch(setDestination(null));
 
          }}
          query={{
