@@ -3,9 +3,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 type NumberOrString = number | string;
 
 export interface NavState {
-  origin: null | NumberOrString;
-  destination: null | NumberOrString;
-  travelTimeInformation: null | NumberOrString;
+  origin: null | NumberOrString | object;
+  destination: null | NumberOrString | object;
+  travelTimeInformation: null | NumberOrString | object;
 }
 
 const initialState: NavState = {
@@ -18,13 +18,13 @@ export const navSlice = createSlice({
   name: 'nav',
   initialState,
   reducers: {
-    setOrigin: (state, action: PayloadAction<NumberOrString>) => {
+    setOrigin: (state, action: PayloadAction<object>) => {
       state.origin = action.payload;
     },
-    setDestination: (state, action: PayloadAction<NumberOrString>) => {
+    setDestination: (state, action: PayloadAction<object>) => {
       state.destination = action.payload;
     },
-    setTravelTimeInformation: (state, action: PayloadAction<NumberOrString>) => {
+    setTravelTimeInformation: (state, action: PayloadAction<object>) => {
       state.travelTimeInformation = action.payload;
     }
   },
