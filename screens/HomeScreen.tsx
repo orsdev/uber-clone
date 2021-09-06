@@ -10,8 +10,8 @@ const HomeScreen = () => {
    return (
       <SafeAreaView style={tw`bg-white h-full w-full py-4`}>
          <View style={tw`p-5 w-full`}>
-            <View style={tw`mb-12 mt-4 overflow-hidden`}>
-               <GooglePlacesInput />
+            <View style={tw`mb-4 mt-4 overflow-hidden`}>
+               <GooglePlacesInput placeholder="Where From?" />
             </View>
             <Image
                source={{
