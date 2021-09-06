@@ -14,13 +14,20 @@ const GooglePlacesInput = () => {
          debounce={400}
          nearbyPlacesAPI="GooglePlacesSearch"
          onPress={(data, details = null) => {
-            const geometry = details?.geometry;
-            const location = geometry?.location;
+            let geometry;
+            let location;
 
-            dispatch(setOrigin({
-               location,
-               description: data.description
-            }));
+            if (details) {
+               geometry = details.geometry;
+               location = geometry.location;
+
+               dispatch(setOrigin({
+                  location,
+                  description: data.description
+               }));
+
+            }
+
 
             dispatch(setDestination(null));
 
