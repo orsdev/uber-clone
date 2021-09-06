@@ -1,7 +1,14 @@
 import React from 'react'
-import { Text, View, FlatList, TouchableOpacity, Image } from 'react-native';
+import {
+   Text,
+   View,
+   FlatList,
+   TouchableOpacity,
+   Image
+} from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 
 type NavProps = {
    id: string;
@@ -25,7 +32,9 @@ const data = [
    }
 ];
 
-const NavOptions = ({ navigation }: any) => {
+const NavOptions = () => {
+   const navigation = useNavigation<any>();
+
    return (
       <FlatList
          keyExtractor={(item) => item.id}
