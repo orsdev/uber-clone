@@ -5,12 +5,12 @@ import { useDispatch } from 'react-redux'
 import { GOOGLE_API_KEY } from '@env';
 import { setDestination, setOrigin } from '../redux/slices/navSlice';
 
-const GooglePlacesInput = () => {
+const GooglePlacesInput = ({ placeholder }: { placeholder: string }) => {
    const dispatch = useDispatch();
 
    return (
       <GooglePlacesAutocomplete
-         placeholder='Where From?'
+         placeholder={placeholder}
          debounce={400}
          nearbyPlacesAPI="GooglePlacesSearch"
          onPress={(data, details = null) => {
