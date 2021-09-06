@@ -10,6 +10,11 @@ import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 
+import { useSelector } from 'react-redux';
+
+import { RootState } from '../redux/store';
+import { OriginProps } from '../redux/slices/navSlice';
+
 type NavProps = {
    id: string;
    title: string;
@@ -34,6 +39,7 @@ const data = [
 
 const NavOptions = () => {
    const navigation = useNavigation<any>();
+   const origin: OriginProps | null = useSelector((state: RootState) => state.nav.origin);
 
    return (
       <FlatList
@@ -50,8 +56,11 @@ const NavOptions = () => {
                      navigation.navigate(item.screen)
                   }
                }}
+               disabled={!origin}
             >
-               <View>
+               <View style={{
+                  opacity: origin ? 1 : .5
+               }}>
                   <Image
                      source={{
                         uri: item.image
