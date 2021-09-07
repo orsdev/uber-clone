@@ -5,7 +5,14 @@ import { useDispatch } from 'react-redux'
 import { GOOGLE_API_KEY } from '@env';
 import { setDestination, setOrigin } from '../redux/slices/navSlice';
 
-const GooglePlacesInput = ({ placeholder }: { placeholder: string }) => {
+type GooglePlaceInputProps = {
+   placeholder: string
+   destination: 'From' | 'To'
+};
+
+const GooglePlacesInput = ({ placeholder,
+   destination
+}: GooglePlaceInputProps) => {
    const dispatch = useDispatch();
 
    return (
@@ -21,16 +28,23 @@ const GooglePlacesInput = ({ placeholder }: { placeholder: string }) => {
                geometry = details.geometry;
                location = geometry.location;
 
-               dispatch(setOrigin({
-                  location,
-                  description: data.description
-               }));
+               if (destination === 'From') {
+                  dispatch(setOrigin({
+                     location,
+                     description: data.description
+                  }));
+
+                  dispatch(setDestination(null));
+               }
+
+               if (destination === 'To') {
+                  dispatch(setDestination({
+                     location,
+                     description: data.description
+                  }));
+               }
 
             }
-
-
-            dispatch(setDestination(null));
-
          }}
          query={{
             key: GOOGLE_API_KEY,
