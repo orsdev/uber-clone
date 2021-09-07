@@ -13,7 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '../redux/store';
-import { OriginProps } from '../redux/slices/navSlice';
+import { OriginDestinationProps } from '../redux/slices/navSlice';
 
 type NavProps = {
    id: string;
@@ -39,7 +39,7 @@ const data = [
 
 const NavOptions = () => {
    const navigation = useNavigation<any>();
-   const origin: OriginProps | null = useSelector((state: RootState) => state.nav.origin);
+   const origin: OriginDestinationProps | null = useSelector((state: RootState) => state.nav.origin);
 
    return (
       <FlatList
