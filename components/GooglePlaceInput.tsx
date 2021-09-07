@@ -1,6 +1,7 @@
 import React from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
 import { GOOGLE_API_KEY } from '@env';
 import { setDestination, setOrigin } from '../redux/slices/navSlice';
@@ -14,6 +15,7 @@ const GooglePlacesInput = ({ placeholder,
    destination
 }: GooglePlaceInputProps) => {
    const dispatch = useDispatch();
+   const navigation: any = useNavigation();
 
    return (
       <GooglePlacesAutocomplete
@@ -42,6 +44,8 @@ const GooglePlacesInput = ({ placeholder,
                      location,
                      description: data.description
                   }));
+
+                  navigation.navigate('RideOptionCard');
                }
 
             }
