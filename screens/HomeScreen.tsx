@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, View, SafeAreaView, Image } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import GooglePlacesInput from '../components/GooglePlaceInput';
+import NavFavorite from '../components/NavFavorite';
 
 import NavOptions from '../components/NavOptions';
 
@@ -27,6 +28,7 @@ const HomeScreen = () => {
             />
 
             <NavOptions />
+            <NavFavorite />
          </View>
       </SafeAreaView>
    )
