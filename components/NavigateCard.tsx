@@ -3,6 +3,7 @@ import { Text, View, SafeAreaView } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 
 import GooglePlacesInput from './GooglePlaceInput';
+import NavFavorite from './NavFavorite';
 
 
 const NavigateCard = () => {
@@ -13,6 +14,7 @@ const NavigateCard = () => {
             <GooglePlacesInput
                placeholder="Where to?"
                destination="To" />
+            <NavFavorite />
          </View>
       </SafeAreaView>
 
