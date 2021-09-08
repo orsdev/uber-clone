@@ -24,7 +24,7 @@ const NavFavorite = () => {
          keyExtractor={(item) => item.id}
          data={data}
          contentContainerStyle={{
-            marginTop: 8
+            marginTop: 1
          }}
          ItemSeparatorComponent={() => (
             <View style={[tw`bg-gray-200`, { height: .6 }]}></View>
