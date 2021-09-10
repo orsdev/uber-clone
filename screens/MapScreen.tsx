@@ -1,7 +1,6 @@
 import React from 'react'
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Map from '../components/Map';

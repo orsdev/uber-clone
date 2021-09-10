@@ -3,6 +3,9 @@ import { useNavigation } from '@react-navigation/native';
 import { FlatList, SafeAreaView, Text, TouchableOpacity, View, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames';
+import { useSelector } from 'react-redux';
+
+import { RootState } from '../redux/store';
 
 
 const data = [
@@ -24,11 +27,15 @@ const data = [
       multiplier: 1.75,
       image: "https://links.papareact.com/7pf"
    }
-]
+];
+
+//If we have SURGE pricing, this goes up
+const SURGE_CHARGE_RATE = 1.5;
 
 const RideOptionCard = () => {
    const navigation: any = useNavigation();
    const [selected, setSelected] = React.useState<any>(null);
+   const travelTime: any = useSelector((state: RootState) => state.nav.travelTimeInformation)
 
    return (
       <SafeAreaView style={tw`bg-white flex-grow`}>
@@ -43,7 +50,9 @@ const RideOptionCard = () => {
             </TouchableOpacity>
          </View>
          <Text
-            style={tw`text-center py-5 text-xl`}>Select a Ride
+            style={tw`text-center py-5 text-xl`}>
+            Select a Ride
+            - {travelTime?.distance.text}
          </Text>
          <FlatList
             data={data}
@@ -67,11 +76,17 @@ const RideOptionCard = () => {
                      <Text
                         style={tw`text-xl font-semibold`}>
                         {item.title}</Text>
-                     <Text>Travel time...</Text>
+                     <Text>{travelTime?.duration.text} Travel Time</Text>
                   </View>
                   <Text
                      style={tw`text-xl`}>
-                     &#x20A6; 99</Text>
+                     &#x20A6;
+                     {
+                        (+travelTime?.duration.value.toLocaleString()
+                           * SURGE_CHARGE_RATE
+                           * item.multiplier) / 100
+                     }
+                  </Text>
                </TouchableOpacity>
             )}
          />
