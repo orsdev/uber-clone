@@ -30,7 +30,7 @@ export const navSlice = createSlice({
     setDestination: (state, action: PayloadAction<OriginDestinationProps | null>) => {
       state.destination = action.payload;
     },
-    setTravelTimeInformation: (state, action: PayloadAction<object | null>) => {
+    setTravelTimeInformation: (state, action: PayloadAction<any>) => {
       state.travelTimeInformation = action.payload;
     }
   },
